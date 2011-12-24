@@ -4,45 +4,20 @@ Facebook Friend Selector v1.0
 Features
 ---
 
-  Ability to set a maximum number for friend selection
-  Exclude as many people as you want from the list
-  Search
-  Overlay color selection
-  Overlay opacity selection
-  Ability to hide the overlay with a mouse click outside the box or a ESC key press
-  Centers the box on window resize
-  Ability to close the box onsubmit
-  Ability to enable or disable to display the number of selected people in the box
-  Seven color options (easily customizable)
-  Adaptability of texts to any desired language
-  Ability to decide what to do onstart
-  Ability to decide what to do onclose
-  Easy integration
-
-
-Frequently Asked Questions
----
-
-  **Q:** What is Facebook Friend Selector and what can it do for you?
-  **A:** It’s a friend selection assistant for your Facebook application or your website that is equipped with Facebook Connect.
-
-  **Q:** It seems to be a Facebook tool, is it so?
-  **A:** It has its Facebook user interface, but is not a Facebook tool.
-
-  **Q:** There are already two different friend selectors on Facebook.
-  **A:** Yes, there are. But Facebook’s present tools, after selecting friends, send invitations or similar notifications to the selected people even if we do not wish to. For example, AppRequests, a Facebook method, sends an application request to the people you select. But this tool returns you your friends ID’s only and you use them as you please.
-
-  **Q:** Is its integration easy? Do I need any documentation?
-  **A:** There are documents among the files provided. If you follow the steps given in this document, you will not have any problem.
-
-  **Q:** Do I need any server-side script?
-  **A:** You do not need any server-side script. You’ll only work with JavaScript as client-side.
-
-  **Q:** Do I have to build a Facebook application?
-  **A:** Yes, you have to have an application on Facebook.
-
-  **Q:** Will it mess up my website or application design?
-  **A:** Because this tool opens as a modal box, it does not alter your design.
+* Ability to set a maximum number for friend selection
+* Exclude as many people as you want from the list
+* Search
+* Overlay color selection
+* Overlay opacity selection
+* Ability to hide the overlay with a mouse click outside the box or a ESC key press
+* Centers the box on window resize
+* Ability to close the box onsubmit
+* Ability to enable or disable to display the number of selected people in the box
+* Seven color options (easily customizable)
+* Adaptability of texts to any desired language
+* Ability to decide what to do onstart
+* Ability to decide what to do onclose
+* Easy integration
 
 
 Requirements
