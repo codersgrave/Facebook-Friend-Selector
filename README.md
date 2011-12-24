@@ -69,13 +69,8 @@ Add these lines into your web site's <head> part or depending on the difference 
 
 Loading jQuery from CDN (Content Delivery Network) is recommended
 
-  <!-- Add Facebook Friend Selector CSS -->
   <link type="text/css" href="/friend-selector/jquery.friend.selector.css" rel="stylesheet" />
-
-  <!-- Add jQuery library -->
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-
-  <!-- Add Facebook Friend Selector JS -->
   <script type="text/javascript" src="/friend-selector/jquery.friend.selector.js"></script>
 
 
