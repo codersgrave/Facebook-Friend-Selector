@@ -78,6 +78,6 @@ This code can be a button, image or a link. It would be adequate to add "bt-fs-d
     <a href="javascript:{}" class="bt-fs-dialog">Click here</a>
 If all of your definitions are correct, you can see the friend selector box when clicked on the example links.
 
-[http://facebook-friend-selector.codersgrave.com/example/]Click here for basic example
+[http://facebook-friend-selector.codersgrave.com/](Click here) for basic example
 
-Facebook Friend Selector is licensed under a Creative Commons Attribution 3.0 Unported License.
+Facebook Friend Selector is licensed under a [http://creativecommons.org/licenses/by/3.0/](Creative Commons Attribution 3.0 Unported) License.
