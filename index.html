@@ -1,0 +1,420 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <meta charset="utf-8">
+
+  <title>Facebook Friend Selector - Coders' Grave</title>
+  <meta name="description" content="Facebook Friend Selector">
+  <meta name="author" content="Coders' Grave">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  <link rel="canonical" href="http://facebook-friend-selector.codersgrave.com">
+  
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+  <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet'>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/google-code-prettify/prettify.css">
+</head>
+
+<body>
+
+<header id="top">
+  <div class="group">
+    <a href="http://codersgrave.com" target="_blank" class="codersgrave">Coders' Grave</a>
+  </div>
+</header><!-- end of #top -->
+
+<section id="page">
+  <header class="group">
+    <div class="description">
+      <h1 class="less"><a href="/">Facebook Friend Selector</a></h1>
+      
+      <p>
+        Facebook Friend Selector is a friend selection assistant for your Facebook application or your website that is equipped with Facebook Connect. This tool returns you your friends ID’s only and you use them as you please.
+      </p>
+      
+      <p>
+        We need your support to continue providing this tool.
+      </p>
+    </div>
+      
+    <figure class="preview-img">
+      <img src="images/thumb.jpg" alt="Facebook Friend Selector Preview">
+    </figure>
+  </header>
+  
+  <div id="main" role="main">
+    <nav class="group">
+      <ul class="tabs">
+        <li class="active"><a href="#usage">Usage</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#options-events">Options / Events</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    
+    <div class="tab-content" id="usage">
+      <article>
+        <header>
+          <h2 class="less">Requirements</h2>
+        </header>
+        
+        <p>
+          jQuery 1.6.2 or above<br>
+          Facebook Javascript SDK integration
+        </p>
+        <p>
+          <strong>Note:</strong> You only need to use the files in the "<strong>friend-selector</strong>" directory.
+        </p>
+      </article>
+    
+      
+      <article>
+        <header>
+          <h2>How to use</h2>
+        </header>
+        
+        <p>
+          <strong>Note:</strong> The following statements don't include Facebook integration. As the basics of the application depend on Facebook API, we assume that you do the Facebook integration.
+        </p>
+        <p>
+          We seperate the Facebook stage not to interfere with the Facebook applications you own that are already online. If you haven't already done the Facebook integration, you can see <a href="http://developers.facebook.com/docs/reference/javascript/" target="_blank">Facebook Javascript SDK</a> page or go check example's source.
+        </p>
+      
+        <h3>1. Include Necessary Files</h3>
+        <p>Add these lines into your web site's &lt;head&gt; part or depending on the difference of usage, up on the &lt;/body&gt; tag.</p>
+        <p>Loading jQuery from CDN (<a href="http://developer.yahoo.com/performance/rules.html#cdn" target="_blank">Content Delivery Network</a>) is recommended</p>
+      
+      
+<pre><code class="prettyprint">&lt;!-- Add Facebook Friend Selector CSS --&gt;
+&lt;link type="text/css" href="/friend-selector/jquery.friend.selector.css" rel="stylesheet" /&gt;
+
+&lt;!-- Add jQuery library --&gt;
+&lt;script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Add Facebook Friend Selector JS --&gt;
+&lt;script type="text/javascript" src="/friend-selector/jquery.friend.selector.js"&gt;&lt;/script&gt;</code></pre>
+    
+        <h3>2. Insert the following code into &lt;body&gt; tag</h3>
+        <p>
+          This is the code block where you define the action for friend selector box. You can replace 
+          "<strong>bt-fs-dialog</strong>" name with anything you want. You have to change the class name in Step 3 with the same name.
+        </p>
+        <p>
+          See the <strong>Options</strong> and <strong>Events</strong> tabs for more options
+        </p>
+      
+      
+<pre><code class="prettyprint">&lt;script type="text/javascript"&gt;
+  jQuery(document).ready(function($) {
+    $(".bt-fs-dialog").fSelector({
+      onSubmit: function(response){
+        // example response usage
+        var selected_friends = [];
+        $.each(response, function(k, v){
+          selected_friends[k] = v;
+        });
+        alert(selected_friends);
+      }
+    });
+  });
+&lt;/script&gt;</code></pre>
+    
+    
+        <h3>3. Add the following code to your page's &lt;body&gt;</h3>
+        <p>
+          This code can be a button, image or a link. It would be adequate to add "<strong>bt-fs-dialog</strong>" to the class property definition.
+        </p>
+        
+<pre><code class="prettyprint">&lt;a href="javascript:{}" class="bt-fs-dialog"&gt;Click here&lt;/a&gt;</code></pre>
+      
+        <p>
+          If all of your definitions are correct, you can see the friend selector box when clicked on the example links.
+        </p>
+        
+        <p>
+          <a href="http://facebook-friend-selector.codersgrave.com/example/" target="_blank">Click here</a> for basic example
+        </p>
+      </article>
+    </div><!-- end of #usage -->
+    
+    <section class="tab-content" id="options-events">
+      <header>
+        <h2 class="less">Options</h2>
+      </header>
+
+      <table>
+        <tr>
+          <th>Option</th>
+          <th>Description</th>
+          <th>Possible values</th>
+          <th>Default value</th>
+        </tr>
+        <tr>
+          <th>max</th>
+          <td>Maximum number of friends that can be choosen.</td>
+          <td>Any integer</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <th>excludeIds</th>
+          <td>Facebook IDs of the people who are excluded from the list. These IDs must be seperated by commas.</td>
+          <td>[987945454741, 321321654654, 98987654654]</td>
+          <td>[]</td>
+        </tr>
+        <tr>
+          <th>closeOverlayClick</th>
+          <td>Specifies if the box will close or not when overlay is clicked.</td>
+          <td>true, false</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <th>overlayColor</th>
+          <td>Specifies the overlay color.</td>
+          <td>Hexadecimal value or color name</td>
+          <td>#000</td>
+          </tr>
+        <tr>
+          <th>overlayOpacity</th>
+          <td>Specifies the transparancy value of the box.</td>
+          <td>0 to 1</td>
+          <td>0.3</td>
+        </tr>
+        <tr>
+          <th>closeOnSubmit</th>
+          <td>Specifies if the box will be closed or not on submit.</td>
+          <td>true, false</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <th>showSelectedCount</th>
+          <td>Specifies if the selected people number will be shown in the box or not. Max value must be more than zero for this property to work.</td>
+          <td>true, false</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <th>color</th>
+          <td>Defines the color of the box.</td>
+          <td>default, dark, light-blue, blue, green, red, pink</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <th>lang.title</th>
+          <td>Defines the title of the box.</td>
+          <td>-</td>
+          <td>Friend Selector</td>
+        </tr>
+        <tr>
+          <th>lang.buttonSubmit</th>
+          <td>Defines the name of submit button.</td>
+          <td>-</td>
+          <td>Send</td>
+        </tr>
+        <tr>
+          <th>lang.buttonCancel</th>
+          <td>Defines the name of cancel button.</td>
+          <td>-</td>
+          <td>Cancel</td>
+        </tr>
+        <tr>
+          <th>lang.summaryBoxResult</th>
+          <td>Summary text for the search result.</td>
+          <td>-</td>
+          <td>{1} best results for {0}</td>
+        </tr>
+        <tr>
+          <th>lang.summaryBoxNoResult</th>
+          <td>Text when the search result is empty.</td>
+          <td>-</td>
+          <td>No results for {0}</td>
+        </tr>
+        <tr>
+          <th>lang.searchText</th>
+          <td>First message text shown on the search box.</td>
+          <td>-</td>
+          <td>Enter a friend's name</td>
+        </tr>
+        <tr>
+          <th>lang.fbConnectError</th>
+          <td>Text when there is a problem about Facebook connection.</td>
+          <td>-</td>
+          <td>You must connect to Facebook to see this.</td>
+        </tr>
+        <tr>
+          <th>lang.selectedCountResult</th>
+          <td>Text to show checked people count.</td>
+          <td>-</td>
+          <td>You have choosen {0} people.</td>
+        </tr>
+        <tr>
+          <th>lang.selectedLimitResult</th>
+          <td>Text when choice limit is reached.</td>
+          <td>-</td>
+          <td>Limit is {0} people.</td>
+        </tr>
+      </table>
+      
+      <header>
+        <h2>Events</h2>
+      </header>
+      
+      <table>
+        <tr>
+          <th>Event</th>
+          <th>Description</th>
+          <th>Possible values</th>
+          <th>Default value</th>
+        </tr>
+        <tr>
+          <th>onStart</th>
+          <td>Runs when the box is opened.</td>
+          <td>function(response){}</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <th>onClose</th>
+          <td>Runs when the box is closed.</td>
+          <td>function(response){}</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <th>onSubmit</th>
+          <td>Runs when submit button clicked.</td>
+          <td>function(response){}</td>
+          <td>null</td>
+        </tr>
+      </table>
+    </section><!-- end of #options-events -->
+    
+    <section class="tab-content" id="examples">
+      <header>
+        <h2 class="less">Examples</h2>
+      </header>
+      
+      <p class="necessity">
+        First you must connect to Facebook.
+      </p>
+      
+      <p>
+        <span class="fs-fullname"></span>
+        <a href="javascript:{}" class="fs-connect">Connect</a>
+      </p>
+      
+      <ul>
+        <li>
+          <a href="javascript:{}" class="bt-fs-dialog">Full options</a>
+        </li>
+        <li>
+          <a href="javascript:{}" id="example-1">Basic usage</a>
+        </li>
+        <li>
+          <a href="javascript:{}" id="example-2">Show selected count</a>
+        </li>
+        <li>
+          <a href="javascript:{}" id="example-3">Close onsubmit</a>
+        </li>
+        <li>
+          <a href="javascript:{}" id="example-4">Color dark</a>
+        </li>
+        <li>
+          <a href="javascript:{}" id="example-5">Color light blue</a>
+        </li>
+        <li>
+          <a href="javascript:{}" id="example-6">Color blue</a>
+        </li>
+        <li>
+          <a href="javascript:{}" id="example-7">Color green</a>
+        </li>
+        <li>
+          <a href="javascript:{}" id="example-8">Color red</a>
+        </li>
+        <li>
+          <a href="javascript:{}" id="example-9">Color pink</a>
+        </li>
+      </ul>
+    </section><!-- end of #examples -->
+          
+    <article class="tab-content" id="features">
+      <header>
+        <h2 class="less">Features</h2>
+      </header>
+
+      <ul>
+        <li>Ability to set a maximum number for friend selection</li>
+        <li>Exclude as many people as you want from the list</li>
+        <li>Search</li>
+        <li>Overlay color selection</li>
+        <li>Overlay opacity selection</li>
+        <li>Ability to hide the overlay with a mouse click outside the box or a ESC key press</li>
+        <li>Centers the box on window resize</li>
+        <li>Ability to close the box onsubmit</li>
+        <li>Ability to enable or disable to display the number of selected people in the box</li>
+        <li>Seven color options (easily customizable)</li>
+        <li>Adaptability of texts to any desired language</li>
+        <li>Ability to decide what to do onstart</li>
+        <li>Ability to decide what to do onclose</li>
+        <li>Easy integration</li>
+      </ul>
+    </article><!-- end of #features -->
+    
+    <article class="tab-content" id="faq">
+      <header>
+        <h2 class="less">Frequently Asked Questions</h2>
+      </header>
+          
+      <p>
+        <strong>Q:</strong> What is Facebook Friend Selector and what can it do for you?<br>
+        <strong>A:</strong> It’s a friend selection assistant for your Facebook application or your website that is equipped with Facebook Connect.
+      </p>
+      
+      <p>
+        <strong>Q:</strong> It seems to be a Facebook tool, is it so?<br>
+        <strong>A:</strong> It has its Facebook user interface, but is not a Facebook tool.
+      </p>
+      
+      <p>
+        <strong>Q:</strong> There are already two different friend selectors on Facebook.<br>
+        <strong>A:</strong> Yes, there are. But Facebook’s present tools, after selecting friends, send invitations or similar notifications to the selected people even if we do not wish to. For example, AppRequests, a Facebook method, sends an application request to the people you select. But this tool returns you your friends ID’s only and you use them as you please.
+      </p>
+      
+      <p>
+        <strong>Q:</strong> Is its integration easy? Do I need any documentation?<br>
+        <strong>A:</strong> There are documents among the files provided. If you follow the steps given in this document, you will not have any problem.
+      </p>
+      
+      <p>
+        <strong>Q:</strong> Do I need any server-side script?<br>
+        A: You do not need any server-side script. You’ll only work with JavaScript as client-side.
+      </p>
+      
+      <p>
+        <strong>Q:</strong> Do I have to build a Facebook application?<br>
+        <strong>A:</strong> Yes, you have to have an application on Facebook.
+      </p>
+      
+      <p>
+        <strong>Q:</strong> Will it mess up my website or application design?<br>
+        <strong>A:</strong> Because this tool opens as a modal box, it does not alter your design.
+      </p>
+    </article><!-- end of #FAQ -->
+  </div><!-- end of #main -->
+  
+  <footer id="bottom">
+    Facebook Friend Selector is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons Attribution 3.0 Unported</a> License. 
+  </footer><!-- end of #bottom -->
+</section><!-- end of #page -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+<script src="js/libs/google-code-prettify/prettify.js"></script>
+<script src="js/functions.js"></script>
+
+</body>
+</html>

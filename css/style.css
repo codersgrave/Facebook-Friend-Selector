@@ -1,0 +1,593 @@
+/* =============================================================================
+   HTML5 element display
+   ========================================================================== */
+   
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio[controls], canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+   
+html {
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font: 400 16px/1.434em Georgia, "Times New Roman", Times, serif;
+}
+
+body, button, input, select, textarea {
+  color: #333;
+}
+
+::-moz-selection {
+  background: #87c2fb;
+  color: #fff;
+  text-shadow: none;
+}
+::selection {
+  background-color: #87c2fb;
+  color: #fff;
+  text-shadow: none;
+}
+:focus {
+  outline: none
+}
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a {
+  color: #4183C4;
+  text-decoration:none
+}
+
+a:hover, a:active { outline: 0; text-decoration: underline; }
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Museo300';
+  src: url('../fonts/museo300-regular-webfont.eot');
+  src: url('../fonts/museo300-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/museo300-regular-webfont.woff') format('woff'),
+    url('../fonts/museo300-regular-webfont.ttf') format('truetype'),
+    url('../fonts/museo300-regular-webfont.svg#') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-weight: 400;
+}
+h1 {
+  font-size: 36px;
+  margin: 0.25em 0 0.75em;
+}
+h2 {
+	color: #222;
+	font-size: 28px;
+	padding: .5em 0 0;
+	border-top: 4px solid #ccc;
+	margin: 2em 0 1em;
+}
+h2.less {
+	margin-top: 0;
+}
+h3 {
+  background-color: #f8f8f8;
+  border-style: solid;
+  border-width: 1px 0;
+  border-color: #ccc;
+  
+  font-size: 20px;
+  
+  margin: 1.5em 0 .75em;
+  padding: .5em .75em;
+  clear: both;
+}
+h4 {
+  font-size: 21px;
+}
+h5 {
+  font-size: 18px;
+}
+
+h1 a {
+  color: #333;
+}
+h1 a:hover {
+  color: #0698ce;
+  text-decoration: none;
+}
+
+abbr[title] { border-bottom: 1px dotted; }
+
+b, strong { font-weight: 700; }
+
+blockquote { margin: 1em 40px; }
+
+dfn { font-style: italic; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+pre, code, kbd, samp {
+  font-family: monospace, monospace;
+  _font-family: 'courier new', monospace;
+  font-size: 14px;
+  white-space: pre;  
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  border-left: 3px solid #ccc;
+  padding: 10px;
+  overflow: auto;
+
+
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol {
+  margin: 1em 0;
+  padding: 0 0 0 40px;
+}
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+
+figure { margin: 0; }
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+form { margin: 0; }
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  border: 0;
+  *margin-left: -7px;
+  padding: 0;
+}
+
+label { cursor: pointer; }
+
+button, input, select, textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+
+button, input {
+  line-height: normal;
+  *overflow: visible;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: none
+}
+
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+table {
+	background-color:#fff;
+  font:13.34px/1.4em helvetica,arial,freesans,clean,sans-serif;
+	margin:20px 0 0;
+	padding:0;
+	border:0;
+	width:100%
+}
+table * tr:nth-child(2n) {
+	background-color:#f8f8f8;
+}
+table th,
+table td {
+	border:1px solid #d8d8d8;
+	padding:7px 15px;
+	margin:0;
+	text-align:left
+}
+
+
+/* =============================================================================
+   Primary styles
+   Author: Sevil YILMAZ
+   ========================================================================== */
+
+#page {
+  padding: 100px 30px 30px;
+  margin: 0 auto;
+  width: 780px;
+}
+
+#top {
+  background-color: #fff;
+  
+  border-bottom: 1px solid #e5e5e5;
+  
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+#top > div {
+  padding: 20px 30px;
+  margin: 0 auto;
+  width: 780px;
+}
+#top aside {
+  float: right;
+}
+
+.codersgrave {
+  font-size: 20px;
+  
+  float: left;
+}
+
+
+
+.description {
+  float: left;
+  width: 440px;
+}
+
+.preview-img {
+  background-image: url(../images/bg-preview-img.png);
+  line-height: 0;
+
+  float: right;
+  height: 233px;
+  padding: 4px;
+  width: 319px;
+}
+
+
+.fs-connect {
+	background-image:url(../images/bt-fb-connect.png);
+	display:block;
+	height:22px;
+	text-indent:-9999px;
+	width:141px
+}
+.fs-connect.logout {
+	background:none;
+	display:inline
+}
+
+.tabs {
+  float: right;
+	display: block;
+	margin: 2em 0 0;
+	padding: 4px 0 0;
+	height: 40px;
+	list-style: none;
+}
+
+.tabs li {
+	float: left;
+	height: 40px;
+}
+
+.tabs li a {
+	display: block;
+	margin: 0 0 0 -1px;
+	height: 39px;
+	padding: 0px 20px;
+	line-height: 40px;
+	border: solid 1px #ddd;
+	border-width: 1px 1px 0 1px;
+	color: #333;
+	background: #f5f5f5;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+.tabs li.active a {
+	position: relative;
+	height: 40px;
+	top: -5px;
+	padding-top: 4px;
+	background: #fff;
+	color: #111;
+	
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-top-left-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.tab-content {
+  display: none;
+  clear: both;
+}
+
+.download-version {
+  margin: 1em 0 2em;
+}
+  
+.button {
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Museo300', Georgia, serif;
+  font-size: 16px;
+  margin-right: 15px;
+  outline: medium none !important;
+  overflow: visible;
+  padding: 8px 18px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.25); 
+  
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+.button:hover, .button:focus {
+  text-decoration: none;
+}
+.button-blue {
+  border: 1px solid #3A8FB6;
+  color: #fff;
+  
+  background: #0698ce;
+  background: -moz-linear-gradient(top, #14BCFB, #0189BC);
+  background: -webkit-gradient(linear,left top,left bottom,from(#14BCFB),to(#0189BC));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#14BCFB', EndColorStr='#0189BC');
+}
+.button-blue:hover, .button-blue:focus {
+  border-color: #0370A2;        
+}
+.button-orange {
+  border: 1px solid #a56500;
+  color: #fff;
+  
+  background: #de9a13;
+  background: -moz-linear-gradient(top, #f8b62e, #d08a1a);
+  background: -webkit-gradient(linear,left top,left bottom,from(#f8b62e),to(#d08a1a));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f8b62e', EndColorStr='#d08a1a');
+}
+
+.bt-download {
+  float: left;
+  margin-right: 10px;
+}
+
+.donate-button {
+  float: left;
+}
+  
+
+#bottom {
+  border-top: 4px solid #ccc;
+  margin: 5em 0;
+  padding: 1em 0 0;
+}
+
+/* =============================================================================
+   Non-semantic helper classes
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir {
+  display: block;
+  text-indent: -999em;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+}
+.ir br { display: none; }
+
+/* Hide for both screenreaders and browsers:
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display: none; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: by Jon Neal.
+  www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638 */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats */ 
+.group:before,
+.group:after {
+  content:".";
+  display:block;
+  height:0;
+  overflow:hidden;
+}
+.group:after {clear:both;}
+.group {zoom:1;}
+
+
+
+/* =============================================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+
+}
+
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports 768px and over go here */
+
+}
+
+
+/* =============================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+ 
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  } /* Black prints faster: sanbeiji.com/archives/953 */
+  
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+rnal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
