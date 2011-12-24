@@ -80,4 +80,7 @@ If all of your definitions are correct, you can see the friend selector box when
 
 [http://facebook-friend-selector.codersgrave.com/](Click here) for basic example
 
+License
+---
+
 Facebook Friend Selector is licensed under a [http://creativecommons.org/licenses/by/3.0/](Creative Commons Attribution 3.0 Unported) License.
