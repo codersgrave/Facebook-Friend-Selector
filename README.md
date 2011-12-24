@@ -69,9 +69,9 @@ Add these lines into your web site's <head> part or depending on the difference 
 
 Loading jQuery from CDN (Content Delivery Network) is recommended
 
-  <link type="text/css" href="/friend-selector/jquery.friend.selector.css" rel="stylesheet" />
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script type="text/javascript" src="/friend-selector/jquery.friend.selector.js"></script>
+    <link type="text/css" href="/friend-selector/jquery.friend.selector.css" rel="stylesheet" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/friend-selector/jquery.friend.selector.js"></script>
 
 
 ### 2. Insert the following code into <body> tag
@@ -80,27 +80,27 @@ This is the code block where you define the action for friend selector box. You 
 
 See the Options and Events tabs for more options
 
-  <script type="text/javascript">
-    jQuery(document).ready(function($) {
-      $(".bt-fs-dialog").fSelector({
-        onSubmit: function(response){
-          // example response usage
-          var selected_friends = [];
-          $.each(response, function(k, v){
-            selected_friends[k] = v;
-          });
-          alert(selected_friends);
-        }
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $(".bt-fs-dialog").fSelector({
+          onSubmit: function(response){
+            // example response usage
+            var selected_friends = [];
+            $.each(response, function(k, v){
+              selected_friends[k] = v;
+            });
+            alert(selected_friends);
+          }
+        });
       });
-    });
-  </script>
+    </script>
 
 
 ### 3. Add the following code to your page's <body>
 
 This code can be a button, image or a link. It would be adequate to add "bt-fs-dialog" to the class property definition.
 
-  <a href="javascript:{}" class="bt-fs-dialog">Click here</a>
+    <a href="javascript:{}" class="bt-fs-dialog">Click here</a>
 If all of your definitions are correct, you can see the friend selector box when clicked on the example links.
 
 [http://facebook-friend-selector.codersgrave.com/example/]Click here for basic example
