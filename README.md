@@ -24,6 +24,7 @@ Requirements
 ---
 
 jQuery 1.6.2 or above
+
 Facebook Javascript SDK integration
 
 Demos And Examples
