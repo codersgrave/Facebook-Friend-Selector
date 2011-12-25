@@ -41,7 +41,7 @@ We seperate the Facebook stage not to interfere with the Facebook applications y
 
 ### 1. Include Necessary Files
 
-Add these lines into your web site's <head> part or depending on the difference of usage, up on the </body> tag.
+Add these lines into your web site's `<head>` part or depending on the difference of usage, up on the `</body>` tag.
 
 Loading jQuery from CDN (Content Delivery Network) is recommended
 
@@ -50,7 +50,7 @@ Loading jQuery from CDN (Content Delivery Network) is recommended
     <script type="text/javascript" src="/friend-selector/jquery.friend.selector.js"></script>
 
 
-### 2. Insert the following code into <body> tag
+### 2. Insert the following code into `<body>` tag
 
 This is the code block where you define the action for friend selector box. You can replace "bt-fs-dialog" name with anything you want. You have to change the class name in Step 3 with the same name.
 
@@ -72,7 +72,7 @@ See the Options and Events tabs for more options
     </script>
 
 
-### 3. Add the following code to your page's <body>
+### 3. Add the following code to your page's `<body>`
 
 This code can be a button, image or a link. It would be adequate to add "bt-fs-dialog" to the class property definition.
 
