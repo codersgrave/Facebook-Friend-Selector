@@ -35,9 +35,13 @@
       selectedCountResult: "You have choosen {0} people.",
       selectedLimitResult: "Limit is {0} people."
     },
-    onStart: function(response){ return null },
-    onClose: function(response){ return null },
-    onSubmit: function(response){ return null }
+    maxFriendsCount: null,
+    showRandom: false,
+    facebookInvite: false,
+    facebookInviteMessage: "Invite message",
+    onStart: function(response){ return null; },
+    onClose: function(response){ return null; },
+    onSubmit: function(response){ return null; }
   },
 
   _start = function(){
@@ -65,7 +69,7 @@
       _stopEvent();
       overlay.fadeOut(400, function(){
         overlay.remove();
-      });      
+      });
     });
 
     running = false;
@@ -81,10 +85,38 @@
       selected_friends.push(parseInt(id));
     });
 
-    fsOptions.onSubmit(selected_friends);
+    if ( fsOptions.facebookInvite == true ){
 
-    if ( fsOptions.closeOnSubmit == true ) {
-      _close();
+      var friends = '';
+
+      $.each( selected_friends, function(k, v){
+        friends += v + ',';
+      });
+
+      friends = friends.substr(0, friends.length - 1);
+
+      FB.ui({
+        method: 'apprequests',
+        message: fsOptions.facebookInviteMessage,
+        to: friends
+      },function(response){
+
+        if ( response != null ){
+          fsOptions.onSubmit(selected_friends);
+
+          if ( fsOptions.closeOnSubmit == true ) {
+            _close();
+          }
+        }
+
+      });
+    }
+    else{
+      fsOptions.onSubmit(selected_friends);
+
+      if ( fsOptions.closeOnSubmit == true ) {
+        _close();
+      }
     }
 
   },
@@ -167,7 +199,19 @@
         return false;
       }
 
-      $.each(response.data, function(k, v){
+
+      var facebook_friends = response.data;
+      var max_friend_control = fsOptions.maxFriendsCount != null && fsOptions.maxFriendsCount > 0;
+      if ( fsOptions.showRandom == true || max_friend_control == true ){
+        facebook_friends = _shuffleData(response.data);
+      }
+
+
+      $.each(facebook_friends, function(k, v){
+
+        if ( max_friend_control && fsOptions.maxFriendsCount <= k ){
+          return false;
+        }
 
         if ($.inArray(parseInt(v.id), fsOptions.excludeIds) >= 0) {
           return true;
@@ -381,6 +425,10 @@
       overlay.css({'height': docHeight});
     }
 
+  },
+  _shuffleData = function(array_data){
+    for (var j, x, i = array_data.length; i; j = parseInt(Math.random() * i), x = array_data[--i], array_data[i] = array_data[j], array_data[j] = x);
+    return array_data;
   }
 
 
