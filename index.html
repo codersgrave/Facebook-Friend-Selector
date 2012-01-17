@@ -32,7 +32,7 @@
 <section id="page">
   <header class="group">
     <div class="description">
-      <h1 class="less"><a href="/">Facebook Friend Selector</a></h1>
+      <h1 class="less"><a href="/">Facebook Friend Selector v.1.1</a></h1>
       
       <p>
         Facebook Friend Selector is a friend selection assistant for your Facebook application or your website that is equipped with Facebook Connect. This tool returns you your friends ID’s only and you use them as you please.
@@ -54,8 +54,8 @@
         <li class="active"><a href="#usage">Usage</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#options-events">Options / Events</a></li>
-        <li><a href="#examples">Examples</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="#changelog">Changelog</a></li>
       </ul>
     </nav>
     
@@ -258,7 +258,32 @@
           <td>-</td>
           <td>Limit is {0} people.</td>
         </tr>
+        <tr>
+          <th>maxFriendsCount</th>
+          <td>Maximum number of friends on list.</td>
+          <td>Any integer</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <th>showRandom</th>
+          <td>Shows friends in random order.</td>
+          <td>true, false</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <th>facebookInvite</th>
+          <td>Facebook invite onsubmit.</td>
+          <td>true, false</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <th>facebookInviteMessage</th>
+          <td>Facebook invite message.</td>
+          <td>-</td>
+          <td>Invite message</td>
+        </tr>
       </table>
+
       
       <header>
         <h2>Events</h2>
@@ -291,54 +316,6 @@
         </tr>
       </table>
     </section><!-- end of #options-events -->
-    
-    <section class="tab-content" id="examples">
-      <header>
-        <h2 class="less">Examples</h2>
-      </header>
-      
-      <p class="necessity">
-        First you must connect to Facebook.
-      </p>
-      
-      <p>
-        <span class="fs-fullname"></span>
-        <a href="javascript:{}" class="fs-connect">Connect</a>
-      </p>
-      
-      <ul>
-        <li>
-          <a href="javascript:{}" class="bt-fs-dialog">Full options</a>
-        </li>
-        <li>
-          <a href="javascript:{}" id="example-1">Basic usage</a>
-        </li>
-        <li>
-          <a href="javascript:{}" id="example-2">Show selected count</a>
-        </li>
-        <li>
-          <a href="javascript:{}" id="example-3">Close onsubmit</a>
-        </li>
-        <li>
-          <a href="javascript:{}" id="example-4">Color dark</a>
-        </li>
-        <li>
-          <a href="javascript:{}" id="example-5">Color light blue</a>
-        </li>
-        <li>
-          <a href="javascript:{}" id="example-6">Color blue</a>
-        </li>
-        <li>
-          <a href="javascript:{}" id="example-7">Color green</a>
-        </li>
-        <li>
-          <a href="javascript:{}" id="example-8">Color red</a>
-        </li>
-        <li>
-          <a href="javascript:{}" id="example-9">Color pink</a>
-        </li>
-      </ul>
-    </section><!-- end of #examples -->
           
     <article class="tab-content" id="features">
       <header>
@@ -348,7 +325,10 @@
       <ul>
         <li>Ability to set a maximum number for friend selection</li>
         <li>Exclude as many people as you want from the list</li>
+        <li>Ability to show random friends list</li>
+        <li>Ability to set maximum friends on list</li>
         <li>Search</li>
+        <li>Facebook invite option (sends apprequest)</li>
         <li>Overlay color selection</li>
         <li>Overlay opacity selection</li>
         <li>Ability to hide the overlay with a mouse click outside the box or a ESC key press</li>
@@ -403,6 +383,36 @@
         <strong>A:</strong> Because this tool opens as a modal box, it does not alter your design.
       </p>
     </article><!-- end of #FAQ -->
+    
+    <article class="tab-content" id="changelog">
+      <header>
+        <h2 class="less">Changelog</h2>
+      </header>
+      
+      <p>
+        <strong>2012/01/17 - v.1.1</strong>
+      </p>
+      <ul>
+        <li>
+          Added - Facebook invite onsubmit
+        </li>
+        <li>
+          Added - Maximum friend count on friend list
+        </li>
+        <li>
+          Added - Random friends list
+        </li>
+      </ul>
+      
+      <p>
+        <strong>2011/12/11 - v.1.0</strong>
+      </p>
+      <ul>
+        <li>
+          First release
+        </li>
+      </ul>
+    </article><!-- end of #changelog -->
   </div><!-- end of #main -->
   
   <footer id="bottom">
