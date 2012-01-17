@@ -1,4 +1,4 @@
-Facebook Friend Selector v1.0
+Facebook Friend Selector v1.1
 =====
 
 Features
