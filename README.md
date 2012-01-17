@@ -6,7 +6,10 @@ Features
 
 * Ability to set a maximum number for friend selection
 * Exclude as many people as you want from the list
+* Ability to show random friends list
+* Ability to set maximum friends on list
 * Search
+* Facebook invite option (sends apprequest)
 * Overlay color selection
 * Overlay opacity selection
 * Ability to hide the overlay with a mouse click outside the box or a ESC key press
