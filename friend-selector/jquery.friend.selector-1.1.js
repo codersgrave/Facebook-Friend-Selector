@@ -1,7 +1,7 @@
 /*
  * Facebook Friend Selector
  * Copyright (c) 2011 Coders' Grave - http://codersgrave.com
- * Version: 1.0
+ * Version: 1.1
  * Requires:
  *   jQuery v1.6.2 or above
  *   Facebook Integration - http://developers.facebook.com/docs/reference/javascript/
