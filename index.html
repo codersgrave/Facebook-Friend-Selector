@@ -32,7 +32,7 @@
 <section id="page">
   <header class="group">
     <div class="description">
-      <h1 class="less"><a href="/">Facebook Friend Selector v.1.1</a></h1>
+      <h1 class="less"><a href="/">Facebook Friend Selector v.1.2</a></h1>
       
       <p>
         Facebook Friend Selector is a friend selection assistant for your Facebook application or your website that is equipped with Facebook Connect. This tool returns you your friends ID’s only and you use them as you please.
@@ -169,8 +169,20 @@
           <td>[]</td>
         </tr>
         <tr>
+          <th>getStoredFriends</th>
+          <td>Facebook IDs of the people who are predefined. These IDs must be seperated by commas.</td>
+          <td>[987945454741, 321321654654, 98987654654]</td>
+          <td>[]</td>
+        </tr>
+        <tr>
           <th>closeOverlayClick</th>
           <td>Specifies if the box will close or not when overlay is clicked.</td>
+          <td>true, false</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <th>enableEscapeButton</th>
+          <td>Specifies if the box will close or not when Esc button is pressed.</td>
           <td>true, false</td>
           <td>true</td>
         </tr>
@@ -199,6 +211,12 @@
           <td>false</td>
         </tr>
         <tr>
+          <th>showButtonSelectAll</th>
+          <td>Specifies if the select all button will be shown or not.</td>
+          <td>true, false</td>
+          <td>true</td>
+        </tr>
+        <tr>
           <th>color</th>
           <td>Defines the color of the box.</td>
           <td>default, dark, light-blue, blue, green, red, pink</td>
@@ -221,6 +239,30 @@
           <td>Defines the name of cancel button.</td>
           <td>-</td>
           <td>Cancel</td>
+        </tr>
+        <tr>
+          <th>lang.buttonSelectAll</th>
+          <td>Defines the name of select all button.</td>
+          <td>-</td>
+          <td>Select All</td>
+        </tr>
+        <tr>
+          <th>lang.buttonDeselectAll</th>
+          <td>Defines the name of deselect all button.</td>
+          <td>-</td>
+          <td>Deselect All</td>
+        </tr>
+        <tr>
+          <th>lang.buttonShowSelected</th>
+          <td>Defines the name of show selected button.</td>
+          <td>-</td>
+          <td>Show Selected</td>
+        </tr>
+        <tr>
+          <th>lang.buttonShowAll</th>
+          <td>Defines the name of show all button.</td>
+          <td>-</td>
+          <td>Show All</td>
         </tr>
         <tr>
           <th>lang.summaryBoxResult</th>
@@ -259,6 +301,12 @@
           <td>Limit is {0} people.</td>
         </tr>
         <tr>
+          <th>lang.facebookInviteMessage</th>
+          <td>Facebook invite message.</td>
+          <td>-</td>
+          <td>Invite message</td>
+        </tr>
+        <tr>
           <th>maxFriendsCount</th>
           <td>Maximum number of friends on list.</td>
           <td>Any integer</td>
@@ -275,12 +323,6 @@
           <td>Facebook invite onsubmit.</td>
           <td>true, false</td>
           <td>false</td>
-        </tr>
-        <tr>
-          <th>facebookInviteMessage</th>
-          <td>Facebook invite message.</td>
-          <td>-</td>
-          <td>Invite message</td>
         </tr>
       </table>
 
@@ -329,6 +371,9 @@
         <li>Ability to set maximum friends on list</li>
         <li>Search</li>
         <li>Facebook invite option (sends apprequest)</li>
+        <li>Ability to select/deselect all friends</li>
+        <li>Ability to show selected friends</li>
+        <li>Ability to predefine selected friends</li>
         <li>Overlay color selection</li>
         <li>Overlay opacity selection</li>
         <li>Ability to hide the overlay with a mouse click outside the box or a ESC key press</li>
@@ -388,6 +433,24 @@
       <header>
         <h2 class="less">Changelog</h2>
       </header>
+
+      <p>
+        <strong>2012/08/13 - v.1.2</strong>
+      </p>
+      <ul>
+        <li>
+          Added - Predefine selected friends
+        </li>
+        <li>
+          Added - Select/deselect all friends
+        </li>
+        <li>
+          Added - Show selected friends
+        </li>
+        <li>
+          Performance improvement
+        </li>
+      </ul>
       
       <p>
         <strong>2012/01/17 - v.1.1</strong>
