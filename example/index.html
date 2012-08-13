@@ -5,18 +5,19 @@
 <title>Facebook Friend Selector Basic Example - Coders' Grave</title>
 
 <!-- Add Facebook Friend Selector CSS -->
-<link type="text/css" href="../friend-selector/jquery.friend.selector-1.1.css" rel="stylesheet" />
+<link type="text/css" href="/friend-selector/jquery.friend.selector-1.2.css" rel="stylesheet" />
 
 <!-- Add jQuery library -->
-<script type="text/javascript" src="../js/libs/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-1.6.2.min.js"></script>
 
 <!-- Add Facebook Friend Selector JS -->
-<script type="text/javascript" src="../friend-selector/jquery.friend.selector-1.1.min.js"></script>
+<script type="text/javascript" src="/friend-selector/jquery.friend.selector-1.2.js"></script>
 
 <!-- Friend Selector Integration  -->
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     $(".bt-fs-dialog").fSelector({
+      getStoredFriends: [518640274, 529053659],
       onSubmit: function(response){
         alert(response);
       }
@@ -33,11 +34,11 @@
 <script type="text/javascript">
   window.fbAsyncInit = function() {
     FB.init({
-      appId  			: 'YOUR_APP_ID', // Facebook Application ID
+      appId  			: '165830993500670', // Facebook Application ID
       status 			: true, // check login status
       cookie 			: true, // enable cookies to allow the server to access the session
       xfbml  			: true, // parse XFBML
-      channelUrl  : '//YOUR_DOMAIN/channel.html', // Channel File
+      channelUrl  : '//ffs.codersgrave.com/example/channel.html', // Channel File
     });
 
 
