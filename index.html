@@ -32,7 +32,7 @@
 <section id="page">
   <header class="group">
     <div class="description">
-      <h1 class="less"><a href="/">Facebook Friend Selector v.1.2</a></h1>
+      <h1 class="less"><a href="/">Facebook Friend Selector v.1.2.1</a></h1>
       
       <p>
         Facebook Friend Selector is a friend selection assistant for your Facebook application or your website that is equipped with Facebook Connect. This tool returns you your friends ID’s only and you use them as you please.
@@ -93,13 +93,13 @@
       
       
 <pre><code class="prettyprint">&lt;!-- Add Facebook Friend Selector CSS --&gt;
-&lt;link type="text/css" href="/friend-selector/jquery.friend.selector.css" rel="stylesheet" /&gt;
+&lt;link type="text/css" href="/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" /&gt;
 
 &lt;!-- Add jQuery library --&gt;
 &lt;script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"&gt;&lt;/script&gt;
 
 &lt;!-- Add Facebook Friend Selector JS --&gt;
-&lt;script type="text/javascript" src="/friend-selector/jquery.friend.selector.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script type="text/javascript" src="/friend-selector/jquery.friend.selector-1.2.1.js"&gt;&lt;/script&gt;</code></pre>
     
         <h3>2. Insert the following code into &lt;body&gt; tag</h3>
         <p>
@@ -116,11 +116,7 @@
     $(".bt-fs-dialog").fSelector({
       onSubmit: function(response){
         // example response usage
-        var selected_friends = [];
-        $.each(response, function(k, v){
-          selected_friends[k] = v;
-        });
-        alert(selected_friends);
+        alert(response);
       }
     });
   });
@@ -177,13 +173,13 @@
         <tr>
           <th>closeOverlayClick</th>
           <td>Specifies if the box will close or not when overlay is clicked.</td>
-          <td>true, false</td>
+          <td>Boolean</td>
           <td>true</td>
         </tr>
         <tr>
           <th>enableEscapeButton</th>
           <td>Specifies if the box will close or not when Esc button is pressed.</td>
-          <td>true, false</td>
+          <td>Boolean</td>
           <td>true</td>
         </tr>
         <tr>
@@ -201,20 +197,26 @@
         <tr>
           <th>closeOnSubmit</th>
           <td>Specifies if the box will be closed or not on submit.</td>
-          <td>true, false</td>
+          <td>Boolean</td>
           <td>false</td>
         </tr>
         <tr>
           <th>showSelectedCount</th>
           <td>Specifies if the selected people number will be shown in the box or not. Max value must be more than zero for this property to work.</td>
-          <td>true, false</td>
+          <td>Boolean</td>
           <td>false</td>
         </tr>
         <tr>
           <th>showButtonSelectAll</th>
           <td>Specifies if the select all button will be shown or not.</td>
-          <td>true, false</td>
+          <td>Boolean</td>
           <td>true</td>
+        </tr>
+        <tr>
+          <th>addUserGroups</th>
+          <td>Adds user groups to the list. If Facebook invitation is true this option will automatically false due to invitation restriction.</td>
+          <td>Boolean</td>
+          <td>false</td>
         </tr>
         <tr>
           <th>color</th>
@@ -315,13 +317,13 @@
         <tr>
           <th>showRandom</th>
           <td>Shows friends in random order.</td>
-          <td>true, false</td>
+          <td>Boolean</td>
           <td>false</td>
         </tr>
         <tr>
           <th>facebookInvite</th>
           <td>Facebook invite onsubmit.</td>
-          <td>true, false</td>
+          <td>Boolean</td>
           <td>false</td>
         </tr>
       </table>

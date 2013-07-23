@@ -1,4 +1,4 @@
-Facebook Friend Selector v1.2
+Facebook Friend Selector v1.2.1
 =====
 
 Features
@@ -13,6 +13,7 @@ Features
 * Ability to select/deselect all friends
 * Ability to show selected friends
 * Ability to predefine selected friends
+* Ability to add user groups
 * Overlay color selection
 * Overlay opacity selection
 * Ability to hide the overlay with a mouse click outside the box or a ESC key press
@@ -51,9 +52,9 @@ Add these lines into your web site's `<head>` part or depending on the differenc
 
 Loading jQuery from CDN (Content Delivery Network) is recommended
 
-    <link type="text/css" href="/friend-selector/jquery.friend.selector.css" rel="stylesheet" />
+    <link type="text/css" href="/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-    <script type="text/javascript" src="/friend-selector/jquery.friend.selector.js"></script>
+    <script type="text/javascript" src="/friend-selector/jquery.friend.selector-1.2.1.js"></script>
 
 
 ### 2. Insert the following code into `<body>` tag
@@ -67,11 +68,7 @@ See the Options and Events tabs for more options
         $(".bt-fs-dialog").fSelector({
           onSubmit: function(response){
             // example response usage
-            var selected_friends = [];
-            $.each(response, function(k, v){
-              selected_friends[k] = v;
-            });
-            alert(selected_friends);
+            alert(response);
           }
         });
       });

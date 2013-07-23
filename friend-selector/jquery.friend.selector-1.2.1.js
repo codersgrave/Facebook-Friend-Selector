@@ -1,7 +1,7 @@
 /*!
  * Facebook Friend Selector
- * Copyright (c) 2012 Coders' Grave - http://codersgrave.com
- * Version: 1.2
+ * Copyright (c) 2013 Coders' Grave - http://codersgrave.com
+ * Version: 1.2.1
  * Requires:
  *   jQuery v1.6.2 or above
  *   Facebook Integration - http://developers.facebook.com/docs/reference/javascript/
@@ -29,7 +29,7 @@
     if ( fsOptions.max > 0 && fsOptions.max !== null ) {
       fsOptions.showSelectedCount = true;
 
-      // if max. number selected hide select all button
+      // if max. number selected, hide select all button
       fsOptions.showButtonSelectAll = false;
     }
 
@@ -59,20 +59,12 @@
 
     var selected_friends = [];
     $('input.fs-friends:checked').each(function(){
-      var splitId = $(this).val().split('-');
-      var id = splitId[1];
-      selected_friends.push(parseInt(id, 10));
+      selected_friends.push(parseInt($(this).val().split('-')[1], 10));
     });
 
     if ( fsOptions.facebookInvite === true ){
-
-      var friends = '';
-
-      for (var i = 0; i < selected_friends.length; i++) {
-        friends += selected_friends[i] + ',';
-      }
-
-      friends = friends.substr(0, friends.length - 1);
+      
+      var friends = selected_friends.join();
 
       FB.ui({
         method: 'apprequests',
@@ -160,54 +152,78 @@
 
   _getFacebookFriend = function() {
 
+
     $('#fs-user-list').append('<div id="fs-loading"></div>');
 
-    FB.api("/me/friends", function(response){
+    if ( fsOptions.addUserGroups && !fsOptions.facebookInvite ) {
 
-      if ( response.error ){
-        alert(fsOptions.lang.fbConnectError);
-        _close();
-        return false;
+      FB.api('/', 'POST', {
+        batch: [
+          { method: 'GET', relative_url: 'me/friends' },
+          { method: 'GET', relative_url: 'me/groups' },
+        ]
+      }, function (response) {
+        _parseFacebookFriends(response);
+      });
+      
+    } else {
+    
+      FB.api('/me/friends', function(response){
+        _parseFacebookFriends(response);
+      }); 
+    }
+
+  },
+  
+  _parseFacebookFriends = function (response) {
+    if ( response.error ){
+      alert(fsOptions.lang.fbConnectError);
+      _close();
+      return false;
+    }
+    
+    var facebook_friends = [];
+    
+    if ( fsOptions.addUserGroups && !fsOptions.facebookInvite ) {
+      var facebook_friends = $.parseJSON(response[0].body).data;
+      $.merge(facebook_friends, $.parseJSON(response[1].body).data);  
+    } else {
+      facebook_friends = response.data;
+    }
+
+    var max_friend_control = fsOptions.maxFriendsCount !== null && fsOptions.maxFriendsCount > 0;
+    if ( fsOptions.showRandom === true || max_friend_control === true ){
+      facebook_friends = _shuffleData(response.data);
+    }
+
+    for (var i = 0, k = 0; i < facebook_friends.length; i++) {
+      if ( max_friend_control && fsOptions.maxFriendsCount <= k ){
+        break;
       }
 
+      if ($.inArray(parseInt(facebook_friends[i].id, 10), fsOptions.getStoredFriends) >= 0) {
+        _setFacebookFriends(i, facebook_friends, true);
+        k++;
+      }
+    }
 
-      var facebook_friends = response.data;
-      var max_friend_control = fsOptions.maxFriendsCount !== null && fsOptions.maxFriendsCount > 0;
-      if ( fsOptions.showRandom === true || max_friend_control === true ){
-        facebook_friends = _shuffleData(response.data);
+    for (var j = 0; j < facebook_friends.length; j++) {
+
+      if ( max_friend_control && fsOptions.maxFriendsCount <=  j + fsOptions.getStoredFriends.length){
+        break;
       }
 
-      for (var i = 0, k = 0; i < facebook_friends.length; i++) {
-        if ( max_friend_control && fsOptions.maxFriendsCount <= k ){
-          break;
-        }
-
-        if ($.inArray(parseInt(facebook_friends[i].id, 10), fsOptions.getStoredFriends) >= 0) {
-          _setFacebookFriends(i, facebook_friends, true);
-          k++;
-        }
+      if ($.inArray(parseInt(facebook_friends[j].id, 10), fsOptions.excludeIds) >= 0) {
+        continue;
+      }
+      
+      if ($.inArray(parseInt(facebook_friends[j].id, 10), fsOptions.getStoredFriends) <= -1) {
+        _setFacebookFriends(j, facebook_friends, false);
       }
 
-      for (var j = 0; j < facebook_friends.length; j++) {
+    }
 
-        if ( max_friend_control && fsOptions.maxFriendsCount <=  j + fsOptions.getStoredFriends.length){
-          break;
-        }
-
-        if ($.inArray(parseInt(facebook_friends[j].id, 10), fsOptions.excludeIds) >= 0) {
-          continue;
-        }
-        
-        if ($.inArray(parseInt(facebook_friends[j].id, 10), fsOptions.getStoredFriends) <= -1) {
-          _setFacebookFriends(j, facebook_friends, false);
-        }
-
-      }
-
-      $('#fs-loading').remove();
-
-    });
-
+    $('#fs-loading').remove();
   },
 
   _setFacebookFriends = function (k, v, predefined) {
@@ -226,7 +242,7 @@
     $('#fs-user-list ul').append(item);
 
     if (predefined) {
-      _click(item);
+      _select(item);
     }
 
   },
@@ -266,7 +282,7 @@
 
 
     wrap.delegate('#fs-user-list li', 'click.fs', function() {
-      _click($(this));
+      _select($(this));
     });
     
     $('#fs-show-selected').click(function(){
@@ -287,7 +303,7 @@
 
   },
 
-  _click = function(th) {
+  _select = function(th) {
     var btn = th;
 
     if ( btn.hasClass('checked') ) {
@@ -307,6 +323,8 @@
       var limit_state = _limitText();
       
       if (limit_state === false) {
+        btn.find('input.fs-friends').attr('checked', false);
+
         return false;
       }
 
@@ -487,7 +505,7 @@
           _resetSelection();
 
           $('#fs-user-list li').each(function() {
-            _click($(this));
+            _select($(this));
           });
                 
           $('#fs-select-all').text(fsOptions.lang.buttonDeselectAll);
@@ -519,25 +537,25 @@
     if (selectedElements.length !== 0 && selectedElements.length !== allElements.length || isShowSelectedActive === true) {
       if (isShowSelectedActive === true) {
         t.removeClass('active').text(fsOptions.lang.buttonShowSelected);
-        
+
         container.children().show();
-        
+
         isShowSelectedActive = false;
       }
       else {
         t.addClass('active').text(fsOptions.lang.buttonShowAll);
-        
+
         container.children().hide();
         $.each(selectedElements, function(){
           $(this).show();
         });
-        
+
         isShowSelectedActive = true;
       }
     }
-     
+
   },
-  
+
   defaults = {
     max: null,
     excludeIds: [],
@@ -549,6 +567,7 @@
     closeOnSubmit: false,
     showSelectedCount: true,
     showButtonSelectAll: true,
+    addUserGroups: false,
     color: "default",
     lang: {
       title: "Friend Selector",
@@ -568,7 +587,7 @@
     },
     maxFriendsCount: null,
     showRandom: false,
-    facebookInvite: false,
+    facebookInvite: true,
     onStart: function(response){ return null; },
     onClose: function(response){ return null; },
     onSubmit: function(response){ return null; }

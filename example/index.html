@@ -5,13 +5,13 @@
 <title>Facebook Friend Selector Basic Example - Coders' Grave</title>
 
 <!-- Add Facebook Friend Selector CSS -->
-<link type="text/css" href="/friend-selector/jquery.friend.selector-1.2.css" rel="stylesheet" />
+<link type="text/css" href="/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
 
 <!-- Add jQuery library -->
 <script type="text/javascript" src="/js/libs/jquery-1.6.2.min.js"></script>
 
 <!-- Add Facebook Friend Selector JS -->
-<script type="text/javascript" src="/friend-selector/jquery.friend.selector-1.2.js"></script>
+<script type="text/javascript" src="/friend-selector/jquery.friend.selector-1.2.1.js"></script>
 
 <!-- Friend Selector Integration  -->
 <script type="text/javascript">
@@ -59,6 +59,7 @@
     });
 
   };
+  
   // Load the SDK Asynchronously
   (function(d){
      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
@@ -66,8 +67,6 @@
      js.src = "//connect.facebook.net/en_US/all.js";
      d.getElementsByTagName('head')[0].appendChild(js);
    }(document));
-
-
 
 
   jQuery(document).ready(function($){
@@ -79,7 +78,7 @@
         } else {
           // User cancelled login or did not fully authorize
         }
-      }, {scope: ''});
+      }, {scope: 'user_groups'});
     });
 
   });
