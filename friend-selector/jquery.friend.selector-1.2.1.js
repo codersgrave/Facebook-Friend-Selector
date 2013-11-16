@@ -404,6 +404,7 @@
         }
 
       }
+      $('#fs-user-list ul').children().show();
     }
 
   },
