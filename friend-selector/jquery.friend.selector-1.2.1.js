@@ -24,6 +24,7 @@
       return false;
     }
 
+    fsOptions.onPreStart();
     fsOptions = $.extend(true, {}, defaults, fsOptions);
 
     if ( fsOptions.max > 0 && fsOptions.max !== null ) {
@@ -588,6 +589,7 @@
     maxFriendsCount: null,
     showRandom: false,
     facebookInvite: true,
+    onPreStart: function(response){ return null; },
     onStart: function(response){ return null; },
     onClose: function(response){ return null; },
     onSubmit: function(response){ return null; }
