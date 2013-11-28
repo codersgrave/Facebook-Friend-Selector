@@ -24,8 +24,8 @@
       return false;
     }
 
-    fsOptions.onPreStart();
     fsOptions = $.extend(true, {}, defaults, fsOptions);
+    fsOptions.onPreStart();
 
     if ( fsOptions.max > 0 && fsOptions.max !== null ) {
       fsOptions.showSelectedCount = true;
@@ -232,7 +232,7 @@
     var item = $('<li/>');
 
     var link =  '<a class="fs-anchor" href="javascript://">' +
-                  '<input class="fs-fullname" type="hidden" name="fullname[]" value="'+v[k].name.toLowerCase().replace(/\s/gi, "+")+'" />' +
+                  '<input class="fs-fullname" type="hidden" name="fullname[]" value="'+v[k].name.toLowerCase().replace(/\s/gi, "0")+'" />' +
                   '<input class="fs-friends" type="checkbox" name="friend[]" value="fs-'+v[k].id+'" />' +
                   '<img class="fs-thumb" src="https://graph.facebook.com/'+v[k].id+'/picture" />' +
                   '<span class="fs-name">' + _charLimit(v[k].name, 15) + '</span>' +
@@ -362,13 +362,32 @@
   _find = function(t) {
 
     var fs_dialog = $('#fs-dialog');
+    var container = $('#fs-user-list ul');
 
     search_text_base = $.trim(t.val());
-    var search_text = search_text_base.toLowerCase().replace(/\s/gi, '+');
+
+    if(search_text_base === ''){
+      $.each(container.children(), function(){
+        $(this).show();
+      });
+
+      if ( fs_dialog.has('#fs-summary-box').length ){
+        if ( selected_friend_count === 1 ){
+          $('#fs-summary-box').remove();
+        }
+        else{
+          $('#fs-result-text').remove();
+        }
+
+      }
+      return;
+    }
+
+    var search_text = search_text_base.toLowerCase().replace(/\s/gi, '0');
 
     var elements = $('#fs-user-list .fs-fullname[value*='+search_text+']');
 
-    var container = $('#fs-user-list ul');
+   
     container.children().hide();
     $.each(elements, function(){
       $(this).parents('li').show();
@@ -392,19 +411,6 @@
     }
     else {
       $('#fs-result-text').text(result_text);
-    }
-
-    if ( search_text_base === '' ){
-      if ( fs_dialog.has('#fs-summary-box').length ){
-
-        if ( selected_friend_count === 1 ){
-          $('#fs-summary-box').remove();
-        }
-        else{
-          $('#fs-result-text').remove();
-        }
-
-      }
     }
 
   },
