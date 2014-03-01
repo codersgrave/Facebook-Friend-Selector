@@ -310,7 +310,7 @@
     if ( btn.hasClass('checked') ) {
 
       btn.removeClass('checked');
-      btn.find('input.fs-friends').attr('checked', false);
+      btn.find('input.fs-friends').prop('checked', false);
 
       selected_friend_count--;
 
@@ -324,7 +324,7 @@
       var limit_state = _limitText();
       
       if (limit_state === false) {
-        btn.find('input.fs-friends').attr('checked', false);
+        btn.find('input.fs-friends').prop('checked', false);
 
         return false;
       }
@@ -332,7 +332,7 @@
       selected_friend_count++;
 
       btn.addClass('checked');
-      btn.find('input.fs-friends').attr('checked', true);
+      btn.find('input.fs-friends').prop('checked', true);
     }
 
     _showFriendCount();
@@ -496,7 +496,7 @@
 
   _resetSelection = function() {
     $('#fs-user-list li').removeClass('checked');
-    $('#fs-user-list input.fs-friends').attr('checked', false);
+    $('#fs-user-list input.fs-friends').prop('checked', false);
     
     selected_friend_count = 1;
   },
