@@ -60,12 +60,15 @@
 
     var selected_friends = [];
     $('input.fs-friends:checked').each(function(){
-      selected_friends.push(parseInt($(this).val().split('-')[1], 10));
+      //had to change it after changing /me/friends to /me/invitable_friends
+      //selected_friends.push(parseInt($(this).val().split('-')[1], 10));
+      selected_friends.push($(this).data('id'));
     });
 
     if ( fsOptions.facebookInvite === true ){
       
-      var friends = selected_friends.join();
+      //var friends = selected_friends.join();
+      var friends = selected_friends.join(',');
 
       FB.ui({
         method: 'apprequests',
@@ -169,7 +172,7 @@
       
     } else {
     
-      FB.api('/me/friends', function(response){
+      FB.api('/me/invitable_friends', function(response){
         _parseFacebookFriends(response);
       }); 
     }
@@ -230,13 +233,25 @@
   _setFacebookFriends = function (k, v, predefined) {
 
     var item = $('<li/>');
+    var number = 0;
 
-    var link =  '<a class="fs-anchor" href="javascript://">' +
+    if ( fsOptions.profileImageRotate === true ) {
+      number = _randomBetween(-5,5);
+    }
+
+    var initial_link =  '<a class="fs-anchor" href="javascript://">' +
                   '<input class="fs-fullname" type="hidden" name="fullname[]" value="'+v[k].name.toLowerCase().replace(/\s/gi, "0")+'" />' +
                   '<input class="fs-friends" type="checkbox" name="friend[]" value="fs-'+v[k].id+'" />' +
                   '<img class="fs-thumb" src="https://graph.facebook.com/'+v[k].id+'/picture" />' +
                   '<span class="fs-name">' + _charLimit(v[k].name, 15) + '</span>' +
                 '</a>';
+    var link =  '<a class="fs-anchor" href="javascript://">' +
+              '<input class="fs-fullname" type="hidden" name="fullname[]" value="'+v[k].name.toLowerCase().replace(/\s/gi, "0")+'" />' +
+              '<input class="fs-friends" type="checkbox" name="friend[]" value="fs-'+v[k].id+'" data-id="'+v[k].id+'" />' +
+              '<div class="fs-img-container" style="-webkit-transform: rotate('+number+'deg); transform: rotate('+number+'deg);">'+
+              '<img  class="fs-thumb" src="'+v[k].picture.data.url+'" /> </div>' +
+              '<span class="fs-name">' + _charLimit(v[k].name, 15) + '</span>' +
+            '</a>';
 
     item.append(link);
 
@@ -302,6 +317,9 @@
       overlay.bind('click.fs', _close);
     }
 
+    if ( fsOptions.profileImageZoom === true ) {
+      _profileImageZoom();
+    }
   },
 
   _select = function(th) {
@@ -357,6 +375,21 @@
 
     return word.substr(0, limit) + '...';
 
+  },
+
+  _profileImageZoom = function(){
+    $(document).on('mouseover','.fs-anchor',function(){
+      $(this).find('img.fs-thumb').addClass('fs-transition');
+    });
+
+
+    $(document).on('mouseout','.fs-anchor',function(){
+        $(this).find('img.fs-thumb').removeClass('fs-transition');
+    });
+  },
+
+  _randomBetween  = function(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   },
 
   _find = function(t) {
@@ -576,6 +609,8 @@
     showButtonSelectAll: true,
     addUserGroups: false,
     color: "default",
+    profileImageZoom: true,
+    profileImageRotate: true,
     lang: {
       title: "Friend Selector",
       buttonSubmit: "Send",

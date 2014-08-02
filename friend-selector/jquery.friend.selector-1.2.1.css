@@ -13,12 +13,19 @@
   font-size: 11px;
   line-height: normal !important;
   
-  width: 555px
+  width: 555px;
+
 }
 #fs-dialog input:focus {
   outline: none
 }
 
+.fs-transition {
+    -webkit-transform: scale(1.4); 
+    -moz-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    transform: scale(1.4);
+}
 
 /* @group Title */
 
@@ -135,7 +142,7 @@
   float: left;
   padding: 5px 0 0 5px;
   width: 173px;
-  overflow: hidden
+  /*overflow: hidden*/
 }
 
 .fs-anchor {
@@ -149,12 +156,12 @@
   
   display: block;
   padding: 2px;
-  overflow: hidden
+  /*overflow: hidden*/
 }
 .fs-anchor:hover {
-  background-color: #eceff5;
-  border-color: #eceff5;
-  
+  /*background-color: #eceff5;
+  border-color: #eceff5;*/
+  color: #000!important;
   text-decoration: none !important
 }
 li.checked .fs-anchor {
@@ -167,12 +174,24 @@ li.checked .fs-anchor {
   margin: 6px 6px 0
 }
 .fs-thumb {
-  border: none;
-
+  border: 1px solid gray;
   float: left;
-  height: 30px;
+  height: 35px;
   margin-right: 5px;
-  width: 30px
+  padding: 2px;
+  width: 35px;
+
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+}
+
+.fs-img-container{
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
 }
 .fs-name {
   display: table-cell;
@@ -299,8 +318,8 @@ li.checked .fs-anchor {
   border-color: #212a30
 }
 .fs-color-dark .fs-anchor:hover {
-  background-color: #ededed;
-  border-color: #ededed
+  /*background-color: #ededed;
+  border-color: #ededed*/
 }
 .fs-color-dark li.checked .fs-anchor {
   background-color: #ddd;
@@ -629,4 +648,9 @@ li.checked .fs-anchor {
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+.fs-img-container{
+  display: table-cell;
+  vertical-align: bottom;
 }
