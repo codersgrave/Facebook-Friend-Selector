@@ -1,5 +1,8 @@
-Facebook Friend Selector v1.2.1
+This repository is no longer maintained
 =====
+
+Facebook Friend Selector v1.2.1
+---
 
 Features
 ---
