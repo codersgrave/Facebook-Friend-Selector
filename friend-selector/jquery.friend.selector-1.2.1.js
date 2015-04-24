@@ -16,6 +16,7 @@
 
   content, wrap, overlay,
   fbDocUri = 'http://developers.facebook.com/docs/reference/javascript/',
+  fbApiVersion = 'v2.3',
 
   _start = function() {
 
@@ -234,7 +235,7 @@
     var link =  '<a class="fs-anchor" href="javascript://">' +
                   '<input class="fs-fullname" type="hidden" name="fullname[]" value="'+v[k].name.toLowerCase().replace(/\s/gi, "0")+'" />' +
                   '<input class="fs-friends" type="checkbox" name="friend[]" value="fs-'+v[k].id+'" />' +
-                  '<img class="fs-thumb" src="https://graph.facebook.com/'+v[k].id+'/picture" />' +
+                  '<img class="fs-thumb" src="https://graph.facebook.com/'+fbApiVersion+'/'+v[k].id+'/picture" />' +
                   '<span class="fs-name">' + _charLimit(v[k].name, 15) + '</span>' +
                 '</a>';
 
