@@ -1,7 +1,7 @@
 This repository is no longer maintained
 =====
 
-Facebook Friend Selector v1.2.1
+Facebook Friend Selector v1.2.2
 ---
 
 Features
@@ -55,9 +55,9 @@ Add these lines into your web site's `<head>` part or depending on the differenc
 
 Loading jQuery from CDN (Content Delivery Network) is recommended
 
-    <link type="text/css" href="/friend-selector/jquery.friend.selector-1.2.1.css" rel="stylesheet" />
+    <link type="text/css" href="/friend-selector/jquery.friend.selector-1.2.2.css" rel="stylesheet" />
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-    <script type="text/javascript" src="/friend-selector/jquery.friend.selector-1.2.1.js"></script>
+    <script type="text/javascript" src="/friend-selector/jquery.friend.selector-1.2.2.js"></script>
 
 
 ### 2. Insert the following code into `<body>` tag
